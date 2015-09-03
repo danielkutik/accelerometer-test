@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.annotation.Nullable;
@@ -16,7 +17,7 @@ public class TestService extends Service {
 
   private static final String TAG = TestService.class.getSimpleName();
 
-  private static final int SENSOR_DELAY = SensorManager.SENSOR_DELAY_NORMAL;
+  private static final int SENSOR_DELAY = SensorManager.SENSOR_DELAY_FASTEST;
 
   private TestListener listener = null;
 
@@ -48,7 +49,16 @@ public class TestService extends Service {
   @Override
   public int onStartCommand(final Intent intent, final int flags, final int startId) {
     Log.wtf(TAG, ".onStartCommand");
-    reregisterDropListener();
+
+    Runnable runnable = new Runnable() {
+      public void run() {
+        Log.wtf(TAG, "Delayed");
+        reregisterDropListener();
+      }
+    };
+
+    new Handler().postDelayed(runnable, 5000);
+
     // We want this service to continue running until it is explicitly
     // stopped, so return sticky.
     return START_STICKY;
