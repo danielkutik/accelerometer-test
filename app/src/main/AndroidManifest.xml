@@ -14,22 +14,6 @@
 
     <service android:name=".TestService"/>
 
-    <receiver android:name=".BootReceiver">
-      <intent-filter>
-        <action android:name="android.intent.action.BOOT_COMPLETED"/>
-      </intent-filter>
-    </receiver>
-
-    <!-- Do not create the ACTION_SCREEN_OFF BroadcastReciever here! -->
-    <!-- Create it programmatically within your service -->
-    <!--
-    <receiver android:name=".ScreenOffReciever">
-      <intent-filter>
-        <action android:name="android.intent.action.ACTION_SCREEN_OFF"/>
-      </intent-filter>
-    </receiver>
-    -->
-
     <activity
       android:name=".MainActivity"
       android:label="@string/title_activity_main">
