@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="eu.kutik.accelerometertest"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+  <application
+    android:name=".TestApplication"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:persistent="true"
+    android:theme="@style/AppTheme">
+
+    <service android:name=".TestService"/>
+
+    <receiver android:name=".BootReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+      </intent-filter>
+    </receiver>
+
+    <!-- Do not create the ACTION_SCREEN_OFF BroadcastReciever here! -->
+    <!-- Create it programmatically within your service -->
+    <!--
+    <receiver android:name=".ScreenOffReciever">
+      <intent-filter>
+        <action android:name="android.intent.action.ACTION_SCREEN_OFF"/>
+      </intent-filter>
+    </receiver>
+    -->
+
+    <activity
+      android:name=".MainActivity"
+      android:label="@string/title_activity_main">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+  </application>
+
+</manifest>
