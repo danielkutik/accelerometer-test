@@ -5,6 +5,7 @@ I tried to get accelerometer data during 'Sceen Off' on Android. On some devices
 have a background thread keep re-registering the listener as long as the screen is off.
 
 http://nosemaj.org/android-persistent-sensors
+http://www.saltwebsites.com/2012/android-accelerometers-screen-off
 
 https://code.google.com/p/android/issues/detail?id=3708
 http://stackoverflow.com/questions/9982433/android-accelerometer-not-working-when-screen-is-turned-off
