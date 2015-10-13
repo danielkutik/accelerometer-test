@@ -126,7 +126,7 @@ public class TestService extends Service {
     registerDropListener();
     // TODO check if the service starts while screen is off
     registerScreenEventReciever();
-    //aquireWakeLock();
+    aquireWakeLock();
   }
 
   @Override
@@ -134,7 +134,7 @@ public class TestService extends Service {
     super.onDestroy();
     unregisterScreenEventReciever();
     unregisterDropListener();
-    //releaseWakeLock();
+    releaseWakeLock();
   }
 
   private void initDropListener() {
